@@ -1,5 +1,5 @@
 class RcloneExporter < Formula
-  desc "A Prometheus exporter for rclone"
+  desc "Prometheus exporter for rclone"
   homepage "https://github.com/crazyuploader/rclone_exporter"
   license "Apache-2.0"
 
