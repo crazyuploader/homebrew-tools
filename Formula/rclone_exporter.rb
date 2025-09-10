@@ -3,6 +3,13 @@ class RcloneExporter < Formula
   homepage "https://github.com/crazyuploader/rclone_exporter"
   license "Apache-2.0"
 
+  bottle do
+    root_url "https://github.com/crazyuploader/homebrew-tools/releases/download/rclone_exporter-86.64"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "646fa32804228e4d2733b7fd7fa66b3714fa9bf6b0587ae7bc6a91bfd5bff199"
+    sha256 cellar: :any_skip_relocation, ventura:       "df06a194c9d4da8f1b980776cad5de6969ddff775d970a63a8438d7871d070f5"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8a2599f36fa150a21425dd4b14eef05e0829b675f4d4c1f7dbd133efc5812a68"
+  end
+
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/crazyuploader/rclone_exporter/releases/download/v1.2/rclone_exporter_Darwin_arm64.tar.gz"
