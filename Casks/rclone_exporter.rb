@@ -14,22 +14,28 @@ cask "rclone_exporter" do
   on_macos do
     on_intel do
       url "https://github.com/crazyuploader/rclone_exporter/releases/download/v#{version}/rclone_exporter_Darwin_x86_64.tar.gz"
-      sha256 "41ec438b176e2c0699eedac89884eb226fafb004a3737ad3e0a425f9e9c490e1"
+      sha256 "8ee2948672198174a2628969f773c4dc8c704af402414ce623d90259047439aa"
     end
     on_arm do
       url "https://github.com/crazyuploader/rclone_exporter/releases/download/v#{version}/rclone_exporter_Darwin_arm64.tar.gz"
-      sha256 "722da724a13ac36e8c9b8d9f2b8d399dd88a15c554df71b675fca476d29e3073"
+      sha256 "56064a0d2d615c0837fd3b4ea6f59ccd2cdb7a2f208b2fa173633dff3072b0e7"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/crazyuploader/rclone_exporter/releases/download/v#{version}/rclone_exporter_Linux_x86_64.tar.gz"
-      sha256 "9617f7482ab4563022e35242321e759832b41b2b79a2e47602001587c6e4b0ee"
+      sha256 "eec7081aeda164ad9242b971a190b44ad425351f0926ba8b82f73a33a7ac78aa"
     end
     on_arm do
       url "https://github.com/crazyuploader/rclone_exporter/releases/download/v#{version}/rclone_exporter_Linux_arm64.tar.gz"
-      sha256 "b012dfe2104d00d0ee1dd257192c44117a98647744243916407f7bf0d5e12dfc"
+      sha256 "2c041c2b481bafef89334582be623181a1b176d99b6aa563988ea8c27ac3ac4e"
+    end
+  end
+
+  postflight do
+    if OS.mac?
+      system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/rclone_exporter"]
     end
   end
 
