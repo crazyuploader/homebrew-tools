@@ -14,22 +14,28 @@ cask "watchdog" do
   on_macos do
     on_intel do
       url "https://github.com/crazyuploader/watchdog/releases/download/v#{version}/watchdog_Darwin_x86_64.tar.gz"
-      sha256 "e0f4ad59e68d2412c945b8ce3cb92f7c9b4e5126a6819549d2f6721f3f6e78f6"
+      sha256 "90cd6a30a0f21036dde4bd39c14860e274968368d3bfd6c322a7eefecc6a54d0"
     end
     on_arm do
       url "https://github.com/crazyuploader/watchdog/releases/download/v#{version}/watchdog_Darwin_arm64.tar.gz"
-      sha256 "845c24fd4e937c2504ef6ddd3686c2849d4241879ff8fc329687f538b2f3d1cf"
+      sha256 "9be60169ca174e9f03d30d678dc8ecbf13a330410053a70bc6f54ce47e024697"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/crazyuploader/watchdog/releases/download/v#{version}/watchdog_Linux_x86_64.tar.gz"
-      sha256 "433639b180983ced70677d633be21db20da2808ce1e23ed4873b77457de18163"
+      sha256 "205997cee78a29c178b65c552e47f227a013fc2b1e2a7f5c0e143b0fd617649e"
     end
     on_arm do
       url "https://github.com/crazyuploader/watchdog/releases/download/v#{version}/watchdog_Linux_arm64.tar.gz"
-      sha256 "2b6159bbfc8c86150e52a18b152e91a5520b9bcfa792482b5ddf2dccfd1980c5"
+      sha256 "ae98d8f9c2a6e40f6d50404967df8e5031b4bc66c6acb8c1bde6ea8a86d31d4d"
+    end
+  end
+
+  postflight do
+    if OS.mac?
+      system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/watchdog"]
     end
   end
 
