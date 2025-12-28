@@ -1,0 +1,38 @@
+name: Auto-fix Homebrew Style
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Casks/**'
+
+permissions:
+  contents: write
+
+jobs:
+  fix-style:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Auto-fix style issues
+        run: |
+          brew style --fix crazyuploader/tools || true
+
+      - name: Commit fixes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "style: auto-fix Homebrew cask formatting"
+            git push
+          fi
