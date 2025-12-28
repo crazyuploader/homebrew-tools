@@ -1,18 +1,69 @@
 # Crazyuploader Tools
 
-## How do I install these formulae?
+Homebrew tap for crazyuploader's CLI tools.
 
-`brew install crazyuploader/tools/<formula>`
+## Available Tools
 
-Or `brew tap crazyuploader/tools` and then `brew install <formula>`.
+- **watchdog** - Lightweight monitoring framework for services with Apprise notifications
+- **rclone_exporter** - Prometheus exporter for rclone
 
-Or, in a `brew bundle` `Brewfile`:
+## Installation
 
-```ruby
+### Install a specific cask
+
+```
+brew install crazyuploader/tools/<cask-name>
+```
+
+For example:
+```
+brew install crazyuploader/tools/watchdog
+brew install crazyuploader/tools/rclone_exporter
+```
+
+### Tap first, then install
+
+```
+brew tap crazyuploader/tools
+brew install watchdog
+brew install rclone_exporter
+```
+
+### Using a Brewfile
+
+Add to your `Brewfile`:
+
+```
 tap "crazyuploader/tools"
-brew "<formula>"
+cask "watchdog"
+cask "rclone_exporter"
+```
+
+Then run:
+```
+brew bundle
+```
+
+## Updating
+
+To update to the latest version:
+
+```
+brew update
+brew upgrade watchdog
+brew upgrade rclone_exporter
+```
+
+## Uninstalling
+
+```
+brew uninstall watchdog
+brew uninstall rclone_exporter
 ```
 
 ## Documentation
 
-`brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
+For general Homebrew help:
+- `brew help`
+- `man brew`
+- [Homebrew's documentation](https://docs.brew.sh)
