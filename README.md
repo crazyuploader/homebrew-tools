@@ -4,12 +4,24 @@ Homebrew tap for crazyuploader's CLI tools.
 
 ## Available Tools
 
-- **watchdog** - Lightweight monitoring framework for services with Apprise notifications
-- **rclone_exporter** - Prometheus exporter for rclone
+-   **rclone_exporter** - Prometheus exporter for rclone
+-   **vmstats** - View Virtual Machine Statistics in real time
+-   **watchdog** - Lightweight monitoring framework for services with Apprise notifications
 
-## Documentation
+## Adding the tap
 
-For general Homebrew help:
-- `brew help`
-- `man brew`
-- [Homebrew's documentation](https://docs.brew.sh)
+```bash
+brew tap crazyuploader/tools
+```
+
+## Installing a tool
+
+```bash
+brew install --cask vmstats
+```
+
+## Uninstalling a tool
+
+```bash
+brew uninstall vmstats
+```
