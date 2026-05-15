@@ -4,28 +4,28 @@ cask "caddy" do
 
   on_macos do
     on_intel do
-      sha256 "33b694c4967afc39e9dd8421ee5541cfbdd608e50a89c662e98d6654581abfd4"
+      sha256 "dbe33c6e35585bc236c636d154b9dc3ed66e36733b675dc0287ad6da568ca177"
       url "https://github.com/crazyuploader/caddy/releases/download/v#{version}/caddy_#{version}_darwin_amd64.tar.gz"
     end
     on_arm do
-      sha256 "7395362fb0bf3901370139a03d4237b31d8516b30deac7fab8865276e737e6ec"
+      sha256 "4a3be866f1938db51a1816a9fdd3350d6c53b45a4a70e2d35430513e643bc3bf"
       url "https://github.com/crazyuploader/caddy/releases/download/v#{version}/caddy_#{version}_darwin_arm64.tar.gz"
     end
   end
 
   on_linux do
     on_intel do
-      sha256 "6fb00343b7b94fe060037880e1dea06fa7a5dd7ecc173c77a8809ccc43cbd0e6"
+      sha256 "995bfce1b72bfb53da527213284da3cf3aa755ef2965aa9173b5337d8c23f1f2"
       url "https://github.com/crazyuploader/caddy/releases/download/v#{version}/caddy_#{version}_linux_amd64.tar.gz"
     end
     on_arm do
-      sha256 "7de13d6f328e0a27f41a9c83e40328648991b288a028d6103957ca4a3bea4264"
+      sha256 "4c01992147f40b2592ade2adccfb38d486b0fb3c008879e4d46092553275249b"
       url "https://github.com/crazyuploader/caddy/releases/download/v#{version}/caddy_#{version}_linux_arm64.tar.gz"
     end
   end
 
   name "caddy"
-  desc "Web Server with custom plugins (cloudflare-dns, security, redis/postgres storage, brotli, rate-limit, layer4, waf)"
+  desc "Caddy Web Server with custom plugins (cloudflare-dns, security, redis/postgres storage, brotli, rate-limit, layer4, waf)"
   homepage "https://github.com/crazyuploader/caddy"
 
   livecheck do
@@ -35,8 +35,11 @@ cask "caddy" do
   binary "caddy"
 
   postflight do
-    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/caddy"] if OS.mac?
+    if OS.mac?
+      system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/caddy"]
+    end
   end
 
   # No zap stanza required
+
 end
