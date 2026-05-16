@@ -25,7 +25,7 @@ cask "caddy" do
   end
 
   name "caddy"
-  desc "Caddy Web Server with custom plugins (cloudflare-dns, security, redis/postgres storage, brotli, rate-limit, layer4, waf)"
+  desc "Web Server with custom plugins (cloudflare-dns, security, redis/postgres storage, brotli, rate-limit, layer4, waf)"
   homepage "https://github.com/crazyuploader/caddy"
 
   livecheck do
@@ -35,11 +35,8 @@ cask "caddy" do
   binary "caddy"
 
   postflight do
-    if OS.mac?
-      system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/caddy"]
-    end
+    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/caddy"] if OS.mac?
   end
 
   # No zap stanza required
-
 end
