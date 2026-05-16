@@ -4,9 +4,10 @@ Homebrew tap for crazyuploader's CLI tools.
 
 ## Available Tools
 
--   **rclone_exporter** - Prometheus exporter for rclone
--   **vmstats** - View Virtual Machine Statistics in real time
--   **watchdog** - Lightweight monitoring framework for services with Apprise notifications
+-   **[caddy](https://github.com/crazyuploader/caddy)** - Web server with custom plugins (cloudflare-dns, security, redis/postgres storage, brotli, rate-limit, layer4, waf)
+-   **[rclone_exporter](https://github.com/crazyuploader/rclone_exporter)** - Prometheus exporter for rclone
+-   **[vmstats](https://github.com/crazyuploader/vmstats)** - View Virtual Machine Statistics in real time
+-   **[watchdog](https://github.com/crazyuploader/watchdog)** - Lightweight monitoring framework for services with Apprise notifications
 
 ## Adding the tap
 
