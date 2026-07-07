@@ -3,19 +3,23 @@ cask "tracerate" do
   version "1.3.0"
 
   on_macos do
+    on_intel do
+      sha256 "44e443983839fe25b06c37416394d1b2588e3f0b90a4a79393eefb3cc9d6b0c9"
+      url "https://github.com/crazyuploader/tracerate/releases/download/v#{version}/tracerate_Darwin_x86_64.tar.gz"
+    end
     on_arm do
-      sha256 "07fc998aeb0e8c2f275506f9161df23b6b5c811f9ccd92c9eecb79873811bef0"
+      sha256 "d13b91dd6abbaf4d4a8401d21c689138c6f7706c3497005c0a54c1747c9cfd78"
       url "https://github.com/crazyuploader/tracerate/releases/download/v#{version}/tracerate_Darwin_arm64.tar.gz"
     end
   end
 
   on_linux do
     on_intel do
-      sha256 "0458eea4f2f919bf1b91dfeb5c45766fd99d5ddb015a6f27f015a79d9d66f012"
+      sha256 "54d04f19db6e808f5d8cf0c91054872094ac6d07c0aad6a812cdb9f0f75a3131"
       url "https://github.com/crazyuploader/tracerate/releases/download/v#{version}/tracerate_Linux_x86_64.tar.gz"
     end
     on_arm do
-      sha256 "532c6ac5c363c8ea10f1171d15c6d85eb7626114ce2921d9ac2ee86996fcc134"
+      sha256 "494d7979466c593411dcc0d6e736dffb77d08288e867318f1963560ce767abd2"
       url "https://github.com/crazyuploader/tracerate/releases/download/v#{version}/tracerate_Linux_arm64.tar.gz"
     end
   end
