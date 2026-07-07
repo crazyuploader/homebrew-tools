@@ -25,7 +25,7 @@ cask "caddy" do
   end
 
   name "caddy"
-  desc "Web Server with custom plugins (cloudflare-dns, security, redis/postgres storage, brotli, rate-limit, layer4, waf)"
+  desc "Web server with custom plugins (DNS, security, storage, brotli, WAF)"
   homepage "https://github.com/crazyuploader/caddy"
 
   livecheck do
