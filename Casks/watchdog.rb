@@ -3,24 +3,23 @@ cask "watchdog" do
   version "1.0.9"
 
   on_macos do
-    on_intel do
-      sha256 "bcdf3329a85d5eb9b53d452b41afb20058f0e76dfd514c6f3140d4ba72da07e6"
-      url "https://github.com/crazyuploader/watchdog/releases/download/v#{version}/watchdog_Darwin_x86_64.tar.gz"
-    end
     on_arm do
       sha256 "06dbf48721b4ec24a7f433aa68e78ad9afdbccf5ac757deb40781f257dabb3de"
       url "https://github.com/crazyuploader/watchdog/releases/download/v#{version}/watchdog_Darwin_arm64.tar.gz"
     end
-  end
-
-  on_linux do
     on_intel do
-      sha256 "31fa5aefc0b2194ba43b6a7cf76dba8a86ac43413b9c290b3de713949daba4d6"
-      url "https://github.com/crazyuploader/watchdog/releases/download/v#{version}/watchdog_Linux_x86_64.tar.gz"
+      sha256 "bcdf3329a85d5eb9b53d452b41afb20058f0e76dfd514c6f3140d4ba72da07e6"
+      url "https://github.com/crazyuploader/watchdog/releases/download/v#{version}/watchdog_Darwin_x86_64.tar.gz"
     end
+  end
+  on_linux do
     on_arm do
       sha256 "83daa8a367da75b21b0c58c41f35c891972d2680028f29e90c79305beb768bc4"
       url "https://github.com/crazyuploader/watchdog/releases/download/v#{version}/watchdog_Linux_arm64.tar.gz"
+    end
+    on_intel do
+      sha256 "31fa5aefc0b2194ba43b6a7cf76dba8a86ac43413b9c290b3de713949daba4d6"
+      url "https://github.com/crazyuploader/watchdog/releases/download/v#{version}/watchdog_Linux_x86_64.tar.gz"
     end
   end
 

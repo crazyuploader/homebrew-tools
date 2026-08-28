@@ -2,6 +2,27 @@
 cask "rclone_exporter" do
   version "1.7"
 
+  on_macos do
+    on_arm do
+      sha256 "4b8fc1f715dbefd8120f9d79e4db9dd70ad293d97cf06802789d4ddc2818398b"
+      url "https://github.com/crazyuploader/rclone_exporter/releases/download/v#{version}/rclone_exporter_Darwin_arm64.tar.gz"
+    end
+    on_intel do
+      sha256 "bcfd9a6fa34121d2e3c9456b261a75b47f3242be5805f4e253993811ab8861da"
+      url "https://github.com/crazyuploader/rclone_exporter/releases/download/v#{version}/rclone_exporter_Darwin_x86_64.tar.gz"
+    end
+  end
+  on_linux do
+    on_arm do
+      sha256 "5a79df65e4e33094081eb5a820663d4d93dab1e62f491807a82045a6dbe9490e"
+      url "https://github.com/crazyuploader/rclone_exporter/releases/download/v#{version}/rclone_exporter_Linux_arm64.tar.gz"
+    end
+    on_intel do
+      sha256 "19c3928e07c16b43bf05664d234305b642af13cdada5d08e1d6d755fa2acf0e8"
+      url "https://github.com/crazyuploader/rclone_exporter/releases/download/v#{version}/rclone_exporter_Linux_x86_64.tar.gz"
+    end
+  end
+
   name "rclone_exporter"
   desc "Prometheus exporter for rclone"
   homepage "https://github.com/crazyuploader/rclone_exporter"
@@ -11,28 +32,6 @@ cask "rclone_exporter" do
   end
 
   binary "rclone_exporter"
-
-  on_macos do
-    on_intel do
-      sha256 "bcfd9a6fa34121d2e3c9456b261a75b47f3242be5805f4e253993811ab8861da"
-      url "https://github.com/crazyuploader/rclone_exporter/releases/download/v#{version}/rclone_exporter_Darwin_x86_64.tar.gz"
-    end
-    on_arm do
-      sha256 "4b8fc1f715dbefd8120f9d79e4db9dd70ad293d97cf06802789d4ddc2818398b"
-      url "https://github.com/crazyuploader/rclone_exporter/releases/download/v#{version}/rclone_exporter_Darwin_arm64.tar.gz"
-    end
-  end
-
-  on_linux do
-    on_intel do
-      sha256 "19c3928e07c16b43bf05664d234305b642af13cdada5d08e1d6d755fa2acf0e8"
-      url "https://github.com/crazyuploader/rclone_exporter/releases/download/v#{version}/rclone_exporter_Linux_x86_64.tar.gz"
-    end
-    on_arm do
-      sha256 "5a79df65e4e33094081eb5a820663d4d93dab1e62f491807a82045a6dbe9490e"
-      url "https://github.com/crazyuploader/rclone_exporter/releases/download/v#{version}/rclone_exporter_Linux_arm64.tar.gz"
-    end
-  end
 
   postflight do
     if OS.mac?

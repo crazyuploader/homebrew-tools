@@ -2,6 +2,27 @@
 cask "vmstats" do
   version "1.1"
 
+  on_macos do
+    on_arm do
+      sha256 "bba3dd5eeebc39f342088afd287ff261f8c4f6b8c4c070d4aeb3f848d6d918de"
+      url "https://github.com/crazyuploader/vmstats/releases/download/v#{version}/vmstats_Darwin_arm64.tar.gz"
+    end
+    on_intel do
+      sha256 "80e4874e81eb5cbf84279820f9aa9e0755c5d589e30a9e40830a6e2952601c3e"
+      url "https://github.com/crazyuploader/vmstats/releases/download/v#{version}/vmstats_Darwin_x86_64.tar.gz"
+    end
+  end
+  on_linux do
+    on_arm do
+      sha256 "8970b15c59163c3c48d2a0c00d5a0cc4cd70074714c272d2b44e3b4d82b77847"
+      url "https://github.com/crazyuploader/vmstats/releases/download/v#{version}/vmstats_Linux_arm64.tar.gz"
+    end
+    on_intel do
+      sha256 "896b8be18a040211ea1378e2898454c923f78b4b91c4377f99684a17a40ed6f7"
+      url "https://github.com/crazyuploader/vmstats/releases/download/v#{version}/vmstats_Linux_x86_64.tar.gz"
+    end
+  end
+
   name "vmstats"
   desc "Beautiful terminal UI for monitoring libvirt/KVM virtual machine statistics"
   homepage "https://github.com/crazyuploader/vmstats"
@@ -11,28 +32,6 @@ cask "vmstats" do
   end
 
   binary "vmstats"
-
-  on_macos do
-    on_intel do
-      sha256 "80e4874e81eb5cbf84279820f9aa9e0755c5d589e30a9e40830a6e2952601c3e"
-      url "https://github.com/crazyuploader/vmstats/releases/download/v#{version}/vmstats_Darwin_x86_64.tar.gz"
-    end
-    on_arm do
-      sha256 "bba3dd5eeebc39f342088afd287ff261f8c4f6b8c4c070d4aeb3f848d6d918de"
-      url "https://github.com/crazyuploader/vmstats/releases/download/v#{version}/vmstats_Darwin_arm64.tar.gz"
-    end
-  end
-
-  on_linux do
-    on_intel do
-      sha256 "896b8be18a040211ea1378e2898454c923f78b4b91c4377f99684a17a40ed6f7"
-      url "https://github.com/crazyuploader/vmstats/releases/download/v#{version}/vmstats_Linux_x86_64.tar.gz"
-    end
-    on_arm do
-      sha256 "8970b15c59163c3c48d2a0c00d5a0cc4cd70074714c272d2b44e3b4d82b77847"
-      url "https://github.com/crazyuploader/vmstats/releases/download/v#{version}/vmstats_Linux_arm64.tar.gz"
-    end
-  end
 
   # No zap stanza required
 end
