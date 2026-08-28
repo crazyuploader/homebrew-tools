@@ -3,24 +3,23 @@ cask "caddy" do
   version "2.11.4"
 
   on_macos do
-    on_intel do
-      sha256 "cf909568df3aff13165d6a359bb5f4558373331eca9b733b341578fc5421e756"
-      url "https://github.com/crazyuploader/caddy/releases/download/v#{version}/caddy_#{version}_darwin_amd64.tar.gz"
-    end
     on_arm do
-      sha256 "51d0227806e67785d272e58f275fcb51294bb1d7c0e4a286180134e6a753c726"
+      sha256 "114a5358c90ae33b81e89331a71063fdef57c6e2cda00ea5e4dffe8ec0d389ea"
       url "https://github.com/crazyuploader/caddy/releases/download/v#{version}/caddy_#{version}_darwin_arm64.tar.gz"
     end
-  end
-
-  on_linux do
     on_intel do
-      sha256 "8ae76051e8f38500ff00963260bc8e71676296b5f247db75f60bad36e5486182"
-      url "https://github.com/crazyuploader/caddy/releases/download/v#{version}/caddy_#{version}_linux_amd64.tar.gz"
+      sha256 "4ad66433f7243ff19f01f85d134070880d0d9c9e6ae58e4fdafcab7209a82c40"
+      url "https://github.com/crazyuploader/caddy/releases/download/v#{version}/caddy_#{version}_darwin_amd64.tar.gz"
     end
+  end
+  on_linux do
     on_arm do
-      sha256 "c3aae286fa78b0ed9a47ccb9497f1735c8bc7219271a725e1b9675717a787a38"
+      sha256 "f4efa16d99142b953dbbbf0f332f9968476f42c8d7b5ed92e08f4788173d61be"
       url "https://github.com/crazyuploader/caddy/releases/download/v#{version}/caddy_#{version}_linux_arm64.tar.gz"
+    end
+    on_intel do
+      sha256 "f2e0c48d7667380a9568acb3da43ba1123f428301c727e6f3745556375d31eae"
+      url "https://github.com/crazyuploader/caddy/releases/download/v#{version}/caddy_#{version}_linux_amd64.tar.gz"
     end
   end
 
@@ -35,7 +34,9 @@ cask "caddy" do
   binary "caddy"
 
   postflight do
-    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/caddy"] if OS.mac?
+    if OS.mac?
+      system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/caddy"]
+    end
   end
 
   # No zap stanza required
