@@ -23,6 +23,9 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Rewrite deprecated postflight hooks
+        run: python3 scripts/fix_postflight.py Casks/*.rb
+
       - name: Auto-fix style issues
         run: |
           brew style --fix --cask crazyuploader/tools || true
