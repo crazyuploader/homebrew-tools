@@ -25,7 +25,7 @@ jobs:
 
       - name: Auto-fix style issues
         run: |
-          brew style --fix crazyuploader/tools || true
+          brew style --fix --cask crazyuploader/tools || true
 
       - name: Commit fixes
         run: |
