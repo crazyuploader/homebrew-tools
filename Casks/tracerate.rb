@@ -3,24 +3,23 @@ cask "tracerate" do
   version "1.4.0"
 
   on_macos do
-    on_intel do
-      sha256 "c7fa65d87f82c9affd38178e19ed7df86cf9c790a72a8c9b718931e62ccec0e3"
-      url "https://github.com/crazyuploader/tracerate/releases/download/v#{version}/tracerate_Darwin_x86_64.tar.gz"
-    end
     on_arm do
       sha256 "b7a5e151743d6657af83b065ad5e283692d8a74b1ad6af05e77c0d6a823183da"
       url "https://github.com/crazyuploader/tracerate/releases/download/v#{version}/tracerate_Darwin_arm64.tar.gz"
     end
-  end
-
-  on_linux do
     on_intel do
-      sha256 "a77e544790bd3f6bbfde006033b4d7a81216ec14278974357612f4ac4e9bcf69"
-      url "https://github.com/crazyuploader/tracerate/releases/download/v#{version}/tracerate_Linux_x86_64.tar.gz"
+      sha256 "c7fa65d87f82c9affd38178e19ed7df86cf9c790a72a8c9b718931e62ccec0e3"
+      url "https://github.com/crazyuploader/tracerate/releases/download/v#{version}/tracerate_Darwin_x86_64.tar.gz"
     end
+  end
+  on_linux do
     on_arm do
       sha256 "d94b2be1707873f9ca861117e4c6a356af3b7e6d7ff8c0cca84eadac5c0d8daa"
       url "https://github.com/crazyuploader/tracerate/releases/download/v#{version}/tracerate_Linux_arm64.tar.gz"
+    end
+    on_intel do
+      sha256 "a77e544790bd3f6bbfde006033b4d7a81216ec14278974357612f4ac4e9bcf69"
+      url "https://github.com/crazyuploader/tracerate/releases/download/v#{version}/tracerate_Linux_x86_64.tar.gz"
     end
   end
 
@@ -34,9 +33,11 @@ cask "tracerate" do
 
   binary "tracerate"
 
-  postflight do
-    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/tracerate"] if OS.mac?
+  postflight_steps do
+    on_macos do
+      run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "tracerate"], chdir: "."
+    end
   end
 
-  # No zap stanza required
+  zap :not_required
 end

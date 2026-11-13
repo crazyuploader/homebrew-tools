@@ -33,11 +33,11 @@ cask "rclone_exporter" do
 
   binary "rclone_exporter"
 
-  postflight do
-    if OS.mac?
-      system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/rclone_exporter"]
+  postflight_steps do
+    on_macos do
+      run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "rclone_exporter"], chdir: "."
     end
   end
 
-  # No zap stanza required
+  zap :not_required
 end
